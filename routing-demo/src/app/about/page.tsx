@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "About Codevolution"
+}
+
 import React from 'react'
 
 const About = () => {
