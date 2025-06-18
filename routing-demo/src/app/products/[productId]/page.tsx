@@ -1,6 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next';
-import { resolve } from 'path';
+
 
 type Props = {
   params: Promise<{productId: string}>

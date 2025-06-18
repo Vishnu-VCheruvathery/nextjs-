@@ -1,8 +1,8 @@
 import React from 'react'
 
-function BarChart(){
-return <h1>Bar Chart</h1>
-}
+// function BarChart(){
+// return <h1>Bar Chart</h1>
+// }
 
 const Dasboard = () => {
   return (
