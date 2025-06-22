@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const ProductList = () => {
+  const productId = 100;
   return (
     <>
     <Link href='/'>Home</Link>
