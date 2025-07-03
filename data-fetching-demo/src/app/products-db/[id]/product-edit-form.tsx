@@ -1,23 +1,23 @@
+"use client"
+import { FormState, editProduct } from "@/actions/products";
 
-import { createProduct, FormState } from "@/actions/products";
-import { Submit } from "@/components/submit";
-import { addProduct } from "@/prisma-db";
-import { redirect } from "next/navigation";
 import { useActionState } from "react";
+import { Product } from "../page";
 
 
 
-
-export default function AddProductPage(){
+export default function EditProductForm({product} : {product: Product}){
+    
 
    const initialState: FormState = {
     errors: {},
    }
 
-    const [state, formAction, isPending] = useActionState(createProduct, initialState)
+  const editProductWithId = editProduct.bind(null, product.id);
 
-   
-     
+    const [state, formAction, isPending] = useActionState(editProductWithId , initialState)
+
+
 
       return (
     <form action={formAction} className="p-4 space-y-4 max-w-96">
@@ -28,7 +28,7 @@ export default function AddProductPage(){
           type="text"
           className="block w-full p-2 text-black border rounded"
           name="title"
-      
+          defaultValue={product.title}
         />
       </label>
       {state.errors.title && <p className="text-red-500">{state.errors.title}</p>}
@@ -40,7 +40,7 @@ export default function AddProductPage(){
           type="number"
           className="block w-full p-2 text-black border rounded"
           name="price"
-        
+         defaultValue={product.price}
         />
       </label>
          {state.errors.price && <p className="text-red-500">{state.errors.price}</p>}
@@ -51,7 +51,7 @@ export default function AddProductPage(){
         <textarea
           className="block w-full p-2 text-black border rounded"
           name="description"
-        
+          defaultValue={product.description ?? ""}
         />
       </label>
          {state.errors.description && <p className="text-red-500">{state.errors.description}</p>}
